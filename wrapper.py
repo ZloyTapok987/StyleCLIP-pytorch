@@ -78,7 +78,8 @@ class Generator():
         self.common_kwargs = generator_config.common_kwargs
 
         self.G = dnnlib.util.construct_class_by_name(**self.G_kwargs, **self.common_kwargs).eval().requires_grad_(False).to(device)
-        copy_params_and_buffers(old_G, self.G, require_all=False)
+        self.G.load_state_dict(old_G)
+        #copy_params_and_buffers(old_G, self.G, require_all=False)
         del old_G
         G = self.G
 
