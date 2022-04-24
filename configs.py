@@ -13,7 +13,7 @@ class GENERATOR_CONFIGS:
             'mapping_kwargs': {'num_layers': 8},
             'synthesis_kwargs': {
                 'channel_base': channel_base,
-                'channel_max': 512,
+                'channel_max': 256,
                 'num_fp16_res': 4,
                 'conv_clamp': 256
             }
