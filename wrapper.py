@@ -1,12 +1,14 @@
 import time
 import shutil
 
+import dlib
 import numpy as np
 import PIL.Image 
 import torch
 from torchvision.transforms import transforms
 import pickle
 import dnnlib
+import legacy
 from configs import GENERATOR_CONFIGS
 from dlib_utils.face_alignment import image_align
 from dlib_utils.landmarks_detector import LandmarksDetector
@@ -69,8 +71,8 @@ class Generator():
     """
     def __init__(self, ckpt, device):
         with dnnlib.util.open_url(ckpt) as f:
-            old_G = pickle.load(f).requires_grad_(False).to(device)
-        resolution = old_G.img_resolution
+            old_G = pickle.load(f)
+        resolution = 128
         generator_config = GENERATOR_CONFIGS(resolution=resolution)
         self.G_kwargs = generator_config.G_kwargs
         self.common_kwargs = generator_config.common_kwargs
