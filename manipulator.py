@@ -48,10 +48,10 @@ class Manipulator():
         - to use projection, used method "set_real_img_projection"
         """
         assert start_ind + num_images < 2000
-        self.W = torch.load(f'tensor/W{dataset_name}.pt')
-        self.S = torch.load(f'tensor/S{dataset_name}.pt')
-        self.S_mean = torch.load(f'tensor/S_mean{dataset_name}.pt')
-        self.S_std = torch.load(f'tensor/S_std{dataset_name}.pt')
+        self.W = torch.load(f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/W{dataset_name}.pt')
+        self.S = torch.load(f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/S{dataset_name}.pt')
+        self.S_mean = torch.load(f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/S_mean{dataset_name}.pt')
+        self.S_std = torch.load(f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/S_std{dataset_name}.pt')
 
         self.S = {layer: self.S[layer].to(device) for layer in G.style_layers}
         self.styles = {layer: self.S[layer][start_ind:start_ind+num_images] for layer in G.style_layers}
