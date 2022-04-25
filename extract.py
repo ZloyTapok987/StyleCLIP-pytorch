@@ -35,6 +35,7 @@ if __name__ == '__main__':
     w_lst = list()
 
     z = torch.from_numpy(np.random.RandomState(seed).randn(100_000, G.G.z_dim))
+    print('googogo')
     for i in tqdm(range(1000)): # 100 * 1000 = 100000 # 1000
         start, end = 100 * i, 100 * (i+1)
         z_ = z[start:end].to(device)
@@ -44,6 +45,8 @@ if __name__ == '__main__':
     w_lst = torch.cat(w_lst)
     torch.save(w_lst, f'tensor/W{dataset_name}.pt')
 
+    print("first done")
+
     # get style of first 2000 sample in W.pt
     sample_ws = w_lst[:2000] # 2000
     sample_s = G.mapping_stylespace(sample_ws.to(device))
@@ -51,6 +54,8 @@ if __name__ == '__main__':
         sample_s[layer] = sample_s[layer].cpu()
     torch.save(sample_s, f'tensor/S{dataset_name}.pt')
     del sample_s
+
+    print("second_done")
 
     # get  std, mean of 100000 style samples
     s_lst = list()
