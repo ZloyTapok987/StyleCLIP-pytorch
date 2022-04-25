@@ -10,7 +10,7 @@ class GENERATOR_CONFIGS:
             'class_name': 'training.networks.Generator',
             'z_dim': 512,
             'w_dim': 512,
-            'mapping_kwargs': {'num_layers': 8},
+            'mapping_kwargs': {'num_layers': 2},
             'synthesis_kwargs': {
                 'channel_base': channel_base,
                 'channel_max': 512,
