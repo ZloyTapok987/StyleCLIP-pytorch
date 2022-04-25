@@ -9,8 +9,8 @@ class GENERATOR_CONFIGS:
         self.G_kwargs = {
             'class_name': 'training.networks.Generator',
             'z_dim': 512,
-            'w_dim': 512,
-            'mapping_kwargs': {'num_layers': 2},
+            'w_dim': 256,
+            'mapping_kwargs': {'num_layers': 8},
             'synthesis_kwargs': {
                 'channel_base': channel_base,
                 'channel_max': 512,
