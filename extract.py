@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
     # get  std, mean of 100000 style samples
     s_lst = list()
-    for i in tqdm(range(1000)): # 100 * 1000
+    for i in tqdm(range(500)): # 100 * 1000
         start, end = 100 * i, 100 * (i+1)
         w_ = w_lst[start:end]
         s_ = G.mapping_stylespace(w_.to(device))
@@ -69,6 +69,7 @@ if __name__ == '__main__':
     del w_lst
     del sample_ws
     del z
+    print("start conccat")
     s_lst = concat_style(s_lst, G.style_layers)
     
     print("third_done")
