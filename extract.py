@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
     # get  std, mean of 100000 style samples
     s_lst = list()
-    for i in tqdm(range(900)): # 100 * 1000
+    for i in tqdm(range(850)): # 100 * 1000
         start, end = 100 * i, 100 * (i+1)
         w_ = w_lst[start:end]
         s_ = G.mapping_stylespace(w_.to(device))
