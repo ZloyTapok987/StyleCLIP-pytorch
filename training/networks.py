@@ -466,7 +466,18 @@ class SynthesisNetwork(torch.nn.Module):
         self.img_resolution_log2 = int(np.log2(img_resolution))
         self.img_channels = img_channels
         self.block_resolutions = [2 ** i for i in range(2, self.img_resolution_log2 + 1)]
-        channels_dict = {res: min(channel_base // res, channel_max) for res in self.block_resolutions}
+
+        channels_dict = {
+            4: 512,
+            8: 512,
+            16: 512,
+            32: 512,
+            64: 256 * 2,
+            128: 128 * 2,
+            256: 64 * 2
+        }
+
+        #channels_dict = {res: min(channel_base // res, channel_max) for res in self.block_resolutions}
         fp16_resolution = max(2 ** (self.img_resolution_log2 + 1 - num_fp16_res), 8)
 
         self.num_ws = 0
