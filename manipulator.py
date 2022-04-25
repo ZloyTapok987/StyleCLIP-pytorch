@@ -273,7 +273,7 @@ def extract_global_direction(G, device, lst_alpha, num_images, dataset_name=''):
     fs3=fs3.mean(axis=1)
     fs3=fs3/np.linalg.norm(fs3,axis=-1)[:,None]
 
-    np.save(f'tensor/fs3{dataset_name}.npy', fs3) # global style direction
+    np.save(f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/fs3{dataset_name}.npy', fs3) # global style direction
 
 
 if __name__ == '__main__':
