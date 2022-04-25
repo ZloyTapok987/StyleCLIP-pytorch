@@ -66,6 +66,7 @@ if __name__ == '__main__':
         for layer in G.style_layers:
             s_[layer] = s_[layer].cpu()
         s_lst.append(s_)
+    del w_lst
     s_lst = concat_style(s_lst, G.style_layers)
     
     print("third_done")
