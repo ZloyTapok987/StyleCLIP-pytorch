@@ -43,7 +43,7 @@ if __name__ == '__main__':
         w_ = G.mapping(z_.to(device), truncation_psi=0.7, truncation_cutoff=8)
         w_lst.append(w_.cpu())
     w_lst = torch.cat(w_lst)
-    torch.save(w_lst, f'tensor/W{dataset_name}.pt')
+    torch.save(w_lst, f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/W{dataset_name}.pt')
 
     print("first done")
 
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     sample_s = G.mapping_stylespace(sample_ws.to(device))
     for layer in G.style_layers:
         sample_s[layer] = sample_s[layer].cpu()
-    torch.save(sample_s, f'tensor/S{dataset_name}.pt')
+    torch.save(sample_s, f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/S{dataset_name}.pt')
     del sample_s
 
     print("second_done")
@@ -67,9 +67,11 @@ if __name__ == '__main__':
             s_[layer] = s_[layer].cpu()
         s_lst.append(s_)
     s_lst = concat_style(s_lst, G.style_layers)
+    
+    print("third_done")
    
     s_mean = {layer: torch.mean(s_lst[layer], axis=0) for layer in G.style_layers}
     s_std = {layer: torch.std(s_lst[layer], axis=0) for layer in G.style_layers}
-    torch.save(s_mean, f'tensor/S_mean{dataset_name}.pt')
-    torch.save(s_std, f'tensor/S_std{dataset_name}.pt')
+    torch.save(s_mean, f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/S_mean{dataset_name}.pt')
+    torch.save(s_std, f'/content/drive/MyDrive/diploma/StyleCLIP/tensor/S_std{dataset_name}.pt')
     print("Done.")
